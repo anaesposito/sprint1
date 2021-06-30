@@ -1,0 +1,81 @@
+swagger: "2.0"
+info:
+  description: "Orden Management System"
+  version: "1.0.0"
+  title: "Delilah Resto Orden Management System "
+  termsOfService: "http://example/tc/"
+  contact:
+    email: "oms.integrations@bsb.com"
+  license:
+    name: "OMS Net"
+    url: "http://www.oms-net.org/licenses/LICENSE-2.0.html"
+host: "delilahresto.test.io"
+basePath: "/v2"
+tags:
+  - name: "Users"
+    description: "User operations"
+  - name: "Administrators"
+    description: "Administrators operations"
+  - name: "Menus"
+    description: "Menu operations"
+schemes:
+  - "https"
+  - "http"
+paths:
+  /administrators:
+    post:
+      tags:
+        - "administrators"
+      summary: "Allows you to creat new Admins"
+      description: " "
+      operationId: "newAdmin"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Administrators is an object"
+          required: true
+          schema:
+            $ref: "#/definitions/administrators"
+          responses:
+            "200":
+              description: "Succes!"
+  /user:
+    post:
+      tags:
+        - "user"
+      summary: "Allows you to creat new Users"
+      description: " "
+      operationId: "newUser"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "user is an object"
+          required: true
+          schema:
+            $ref: "#/definitions/user"
+          responses:
+            "200":
+              description: "Succes!"
+    /order:
+      post:
+        tags:
+          - "order"
+      summary: "Allows you to creat new Order"
+      description: " "
+      operationId: "newOrder"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "order is an object"
+          required: true
+          schema:
+            $ref: "#/definitions/order"
+          responses:
+            "200":
+              description: "Succes!"
