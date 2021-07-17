@@ -1,0 +1,21 @@
+[
+    {
+        "id": "",
+        "userName": "",
+        "name": "",
+        "phoneNumber": "",
+        "email": "",
+        "deliveryAdress": "",
+        "password": "",
+        "type": "user"
+    },
+    {
+        "id": "",
+        "userName": "",
+        "name": "",
+        "phoneNumber": "",
+        "email": "",
+        "password": "",
+        "type": "admin"
+    }
+]

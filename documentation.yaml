@@ -26,7 +26,7 @@ paths:
     post:
       tags:
         - "administrators"
-      summary: "Allows you to creat new Admins"
+      summary: "Allows you to create new Admins"
       description: " "
       operationId: "newAdmin"
       consumes:
@@ -37,15 +37,29 @@ paths:
           description: "Administrators is an object"
           required: true
           schema:
-            $ref: "#/definitions/administrators"
-          responses:
+            $ref: "#/administrators"
+      responses:
             "200":
               description: "Succes!"
+              
+    get:
+      tags:
+        - "administrators"
+      summary: "Allows you to see all the Admins information"
+      description: "Brings you the array with the Admins Information "
+      responses:
+        "200":
+          description: "Succes!"      
+          schema:
+           type: "array"
+           items:
+            $ref: "#/administrators"
+       
   /user:
     post:
       tags:
         - "user"
-      summary: "Allows you to creat new Users"
+      summary: "Allows you to create new Users"
       description: " "
       operationId: "newUser"
       consumes:
@@ -56,15 +70,60 @@ paths:
           description: "user is an object"
           required: true
           schema:
-            $ref: "#/definitions/user"
-          responses:
+            $ref: "#/user"
+      responses:
             "200":
-              description: "Succes!"
-    /order:
-      post:
-        tags:
+              description: "Success!"
+              
+    get:
+      tags:
+        - "user"
+      summary: "Allows you see all the user information"
+      description: "Brings you the array with the user Information "
+      responses:
+         "200":
+          description: "Success!"      
+          schema:
+            type: "array"
+            items: 
+              $ref: "#/user"
+    put:
+      tags:
+          - "user"
+      summary: "Creates a modification in Users"
+      description: "Modify Users"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "user is an object"
+        schema:
+          $ref: "#/user"
+      responses:
+        200:
+          description: "Success!"
+        405:
+          description: "invalid element"  
+          
+    delete:
+       tags:
+          - "user"
+       summary: "Deletes an order"
+       description: "Deletes an order"
+      
+       responses:
+        200:
+          description: "Success!"
+        405:
+          description: "invalid element"            
+      
+                 
+              
+              
+  /order:
+    post:
+      tags:
           - "order"
-      summary: "Allows you to creat new Order"
+      summary: "Allows you to create a new Order"
       description: " "
       operationId: "newOrder"
       consumes:
@@ -75,7 +134,111 @@ paths:
           description: "order is an object"
           required: true
           schema:
-            $ref: "#/definitions/order"
-          responses:
+            $ref: "#/order"
+      responses:
             "200":
-              description: "Succes!"
+              description: "Success!"
+              
+    get:
+      tags:
+        - "order"
+      summary: "Allows you to see all the order information"
+      description: "Brings you the array with the order Information "
+      responses:
+         "200":
+          description: "Success!"      
+          schema:
+            type: "array"
+            items: 
+              $ref: "#/order"          
+    put:
+      tags:
+        - "order"
+      summary: "Creates a modification in an order"
+      description: "Modify an order"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "object to create a new order"
+       
+        schema:
+          $ref: "#/order"
+      responses:
+        200:
+          description: "Successs!"
+        405:
+          description: "invalid element"  
+          
+    delete:
+       tags:
+         - "order"
+       summary: "Deletes an order"
+       description: "Deletes an order"
+      
+       responses:
+        200:
+          description: "Success!"
+        405:
+          description: "invalid element"  
+    
+    /products:
+    post:
+      tags:
+          - "products"
+      summary: "Allows you to create new products"
+      description: " "
+      operationId: "newProducts"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "products is an object"
+          required: true
+          schema:
+            $ref: "#/products"
+      responses:
+            "200":
+              description: "Success!"
+              
+    get:
+      tags:
+        - "products"
+      summary: "Allows you see all the products information"
+      description: "Brings you the array with the products Information "
+      responses:
+         "200":
+          description: "Success!"      
+          schema:
+            type: "array"
+            items: 
+              $ref: "#/products"          
+    put:
+      tags:
+        - "products"
+      summary: "Creates a modification in a product"
+      description: "Modify a product"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "object to create a new product"
+       
+        schema:
+          $ref: "#/products"
+      responses:
+        200:
+          description: "Success!"
+        405:
+          description: "invalid element"  
+          
+    delete:
+       tags:
+         - "products"
+       summary: "Delete a product"
+       description: "Delete a product"
+      
+       responses:
+        200:
+          description: "Success!"
+        405:
+          description: "invalid element"  

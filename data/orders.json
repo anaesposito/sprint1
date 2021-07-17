@@ -1,0 +1,49 @@
+[
+    {
+        "id": "",
+        "time": "",
+        "user": "",
+        "items": [],
+        "deliveryAdress": "La callejuela 1223",
+        "status": "pending",
+        "openForChanges": true,
+        "totalPrice": 2,
+        "typeOfPayment": ""
+    },
+    {
+        "id": "",
+        "time": "",
+        "user": "",
+        "items": [],
+        "deliveryAdress": "La callejuela 1223",
+        "status": "on preparation",
+        "openForChanges": true
+    },
+    {
+        "id": "",
+        "time": "",
+        "user": "",
+        "items": [],
+        "deliveryAdress": "La callejuela 1223",
+        "status": "confirmed",
+        "openForChanges": true
+    },
+    {
+        "id": "",
+        "time": "",
+        "user": "",
+        "items": [],
+        "deliveryAdress": "La callejuela 1223",
+        "status": "delivered",
+        "openForChanges": false
+    },
+    {
+        "id": "",
+        "time": "",
+        "user": "",
+        "items": [],
+        "deliveryAdress": "La callejuela 1223",
+        "status": "sended",
+        "openForChanges": false
+    }
+]

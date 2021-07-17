@@ -1,0 +1,23 @@
+{
+  "name": "sprint1",
+  "version": "1.0.0",
+  "description": "my first api",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anaesposito/sprint1.git"
+  },
+  "author": "Ana Esposito",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anaesposito/sprint1/issues"
+  },
+  "homepage": "https://github.com/anaesposito/sprint1#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
