@@ -1,4 +1,7 @@
 const { readFromJson } = require("./utils");
+const {update} = require("./utils")
+const orders = require("./data/entities.json")
+
 const fs = require("fs");
 
 function loginUsers(req, res) {}
@@ -32,9 +35,12 @@ const createProduct = (req, res, next) => {
 };
 
 const updateProduct = (req, res, next)=> {
+
+
       try {
      let data = readFromJson("./data/products.json")
       const productInfo = data.find(prod => prod.id === Number(req.params.id));
+      console.log("soy product info", productInfo)
       if (!productInfo) {
         const err = new Error('Product info not found');
         err.status = 404;
@@ -67,45 +73,50 @@ function listOfOrders(req, res) {
 }
 function createOrder(req, res) {}
 
-const updateOrder = (req, res,next) => {
- 
-    try {
-   let data = readFromJson("./data/orders.json")
-    const orderInfo = data.find(ord => ord.id === Number(req.params.id));
-    if (!orderInfo) {
-      const err = new Error('Order info not found');
-      err.status = 404;
-      throw err;
-    }
-    const newOrderInfoData = {
 
-      id: "",
-      time: "",
-      user: "",
-      items: [],
-      deliveryAdress: "",
-      status: "pending",
-      openForChanges: true,
-      totalPrice: 2,
-      typeOfPayment: ""
+// (req, res, next, model, entityFile, entityName
+const updateOrder = (req, res,next) => { 
+ let entityFile = "./data/orders.json"
+  let entityName = "orders"
+  update(req, res, next, orders, entityFile, entityName)
 
-      // id: req.body.id,
-      // name: req.body.name,
-      // price: req.body.price,
-      // quantity: req.body.quantity,
-    };
-    const newOrderInfo = data.map(ord => {
-      if (ord.id === Number(req.params.id)) {
-        return newOrderInfoData;
-      } else {
-        return ord;
-      }
-    });
-    fs.writeFileSync("./data/orders.json", JSON.stringify(newOrderInfo));
-    res.status(200).json(newOrderInfoData);
-  } catch (e) {
-    next(e);
-  }
+  //   try {
+  //  let data = readFromJson("./data/orders.json")
+  //   const orderInfo = data.find(ord => ord.id === Number(req.params.id));
+  //   if (!orderInfo) {
+  //     const err = new Error('Order info not found');
+  //     err.status = 404;
+  //     throw err;
+  //   }
+  //   const newOrderInfoData = {
+
+  //     id: "",
+  //     time: "",
+  //     user: "",
+  //     items: [],
+  //     deliveryAdress: "",
+  //     status: "pending",
+  //     openForChanges: true,
+  //     totalPrice: 2,
+  //     typeOfPayment: ""
+
+  //     // id: req.body.id,
+  //     // name: req.body.name,
+  //     // price: req.body.price,
+  //     // quantity: req.body.quantity,
+  //   };
+  //   const newOrderInfo = data.map(ord => {
+  //     if (ord.id === Number(req.params.id)) {
+  //       return newOrderInfoData;
+  //     } else {
+  //       return ord;
+  //     }
+  //   });
+  //   fs.writeFileSync("./data/orders.json", JSON.stringify(newOrderInfo));
+  //   res.status(200).json(newOrderInfoData);
+  // } catch (e) {
+  //   next(e);
+  // }
 };
 
 function deleteOrder(req, res) {}

@@ -16,7 +16,7 @@ const {
   //   createOrder,
     updateOrder,
   //   deleteOrder,
-  listOfPaymentsMethod,
+  listOfPaymentsMethod
 
   //   createPaymentMethod,
   //   updatePaymentMethod,
@@ -55,6 +55,6 @@ server.get("/api/v1/paymentMethod", listOfPaymentsMethod);
 // server.put("/api/v1/paymentMethod/:id", updatePaymentMethod);
 // server.delete("/api/v1/paymentMethod/:id", deletePaymentMethod);
 
-server.listen(3030, function () {
-  console.log("Escuchando el puerto 3000!");
+server.listen(9090, function () {
+  console.log("Escuchando el puerto 9090!");
 });
