@@ -1,15 +1,6 @@
 {
     "order": {
-        "id": "req.body.id",
-        "time": " req.body.time",
-        "user": "req.body.user",
-        "items": [
-            "req.body.items"
-        ],
-        "deliveryAdress": "req.body.deliveryAdress",
-        "status": "req.body.status",
-        "openForChanges": "req.body.openForChanges",
-        "totalPrice": "req.body.totalPrice",
-        "typeOfPayment": "req.body.typeOfPayment"
+      
+      
     }
 }

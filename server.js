@@ -13,6 +13,7 @@ const {
     updateProduct,
   //   deleteProduct,
   listOfOrders,
+  // seeOrder,
   //   createOrder,
     updateOrder,
   //   deleteOrder,
@@ -45,6 +46,7 @@ server.put("/api/v1/products/:id", updateProduct);
 
 // //Orders
 server.get("/api/v1/order", listOfOrders);
+// server.get("/api/v1/order/:id", seeOrder)
 // server.post("/api/v1/order/:id", createOrder);
 server.put("/api/v1/order/:id", updateOrder);
 // server.delete("/api/v1/order/:id", deleteOrder);
