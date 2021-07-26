@@ -1,5 +1,3 @@
-const logFile = require("./data/products.json");
-const fs = require("fs");
 // const orders = require("./data/entities.js")
 // const products = require("./data/entities.js")
 
@@ -27,17 +25,12 @@ const create = (req, res, next, model, entityFile, entityName) => {
 };
 
 const update = async (req, res, next, model, entityFile, entityName) => {
-  console.log("soy entityfile", entityFile);
-  console.log("soy entityName", entityName);
-
   try {
     let DBEntities = readFromJson(entityFile);
-    console.log("hola soy DBEntities", DBEntities);
     //aca busca el id que le paso
     const entityFromDB = DBEntities.find(
       (entity) => entity.id === Number(req.params.id)
     );
-    console.log("soy entityFromDB", entityFromDB);
     //aca valida si existe ese obj con ese id
     if (!entityFromDB) {
       const err = new Error(`${entityName} info not found`);

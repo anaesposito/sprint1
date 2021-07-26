@@ -2,27 +2,36 @@ const express = require("express");
 
 const server = express();
 const {
+  //   deleteProduct,
+  listOfOrders,
+  getOneOrder,
+  //   createOrder,
+  updateOrder,
+  //   deleteOrder,
+} = require("./handlers/ordersHandlers");
+
+const {
+  listOfProducts,
+  createProduct,
+  updateProduct,
+} = require("./handlers/productsHandlers");
+
+const {
   //   loginUsers,
   //   registerUsers,
   //   createUser,
   //   updateUser,
   listOfUsers,
-  //   deleteUser,
-  listOfProducts,
-  createProduct,
-    updateProduct,
-  //   deleteProduct,
-  listOfOrders,
-  // seeOrder,
-  //   createOrder,
-    updateOrder,
-  //   deleteOrder,
-  listOfPaymentsMethod
+  // deleteUser,
+} = require("./handlers/usersHandlers");
+
+const {
+  listOfPaymentsMethod,
 
   //   createPaymentMethod,
   //   updatePaymentMethod,
   //   deletePaymentMethod,
-} = require("./functions.js");
+} = require("./handlers/typeOfPaymentsHandlers");
 
 server.use(express.json());
 
@@ -46,7 +55,7 @@ server.put("/api/v1/products/:id", updateProduct);
 
 // //Orders
 server.get("/api/v1/order", listOfOrders);
-// server.get("/api/v1/order/:id", seeOrder)
+server.get("/api/v1/order/:id", getOneOrder);
 // server.post("/api/v1/order/:id", createOrder);
 server.put("/api/v1/order/:id", updateOrder);
 // server.delete("/api/v1/order/:id", deleteOrder);
