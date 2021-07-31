@@ -1,21 +1,32 @@
 [
-    {
-        "id": "",
-        "userName": "",
-        "name": "",
-        "phoneNumber": "",
-        "email": "",
-        "deliveryAdress": "",
-        "password": "",
-        "type": "user"
-    },
-    {
-        "id": "",
-        "userName": "",
-        "name": "",
-        "phoneNumber": "",
-        "email": "",
-        "password": "",
-        "type": "admin"
-    }
+  {
+    "id": 1,
+    "userName": "anita88",
+    "name": "ana",
+    "phoneNumber": "1234651",
+    "email": "ana@gmail.com",
+    "deliveryAdress": "la calle 14",
+    "password": "1234+",
+    "type": "user"
+  },
+  {
+    "id": 2,
+    "userName": "anita88",
+    "name": "ana",
+    "phoneNumber": "1234651",
+    "email": "ana@gmail.com",
+    "deliveryAdress": "la calle 14",
+    "password": "1234+",
+    "type": "user"
+  },
+  {
+    "id": 3,
+    "userName": "anita88",
+    "name": "ana",
+    "phoneNumber": "1234651",
+    "email": "ana@gmail.com",
+    "deliveryAdress": "la calle 14",
+    "password": "1234+",
+    "type": "user"
+  }
 ]

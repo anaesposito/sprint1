@@ -1,64 +1,44 @@
+const { updateOneObj } = require("../functions.js");
+const { readFromJson } = require("../functions.js");
+const { getOneObj } = require("../functions.js");
+const { createOneObject } = require("../functions.js");
+const { deleteObj } = require("../functions.js");
+
+const model = (req, res) => {
+  return {
+    id: Number(req.body.id),
+    name: req.body.name,
+    price: Number(req.body.price),
+    quantity: Number(req.body.quantity),
+  };
+};
+let entityFile = "./data/products.json";
+let entityName = "product";
+
 const listOfProducts = (req, res) => {
   res.send(readFromJson("./data/products.json"));
 };
 
-// const seeProduct = (req, res) => {};
-
-const createProduct = (req, res, next) => {
-  try {
-    let data = readFromJson("./data/products.json");
-    const newProduct = {
-      id: req.body.id,
-      name: req.body.name,
-      price: req.body.price,
-      quantity: req.body.quantity,
-    };
-    data.push(newProduct);
-
-    // crear writeJson con data.push
-    fs.writeFileSync("./data/products.json", JSON.stringify(data));
-    res.status(201).json(newProduct);
-  } catch (e) {
-    next(e);
-  }
+const getOneProduct = (req, res, entityFile, entityName) => {
+  getOneObj(req, res, entityFile, entityName);
 };
 
-const updateProduct = (req, res, next) => {
-  try {
-    let data = readFromJson("./data/products.json");
-    const productInfo = data.find((prod) => prod.id === Number(req.params.id));
-
-    if (!productInfo) {
-      const err = new Error("Product info not found");
-      err.status = 404;
-      throw err;
-    }
-    const newProductInfoData = {
-      id: req.body.id,
-      name: req.body.name,
-      price: req.body.price,
-      quantity: req.body.quantity,
-    };
-    const newProductInfo = data.map((prod) => {
-      if (prod.id === Number(req.params.id)) {
-        return newProductInfoData;
-      } else {
-        return prod;
-      }
-    });
-    fs.writeFileSync("./data/products.json", JSON.stringify(newProductInfo));
-    res.status(200).json(newProductInfoData);
-  } catch (e) {
-    next(e);
-  }
+const createProduct = (req, res, next, model, entityFile) => {
+  createOneObject(req, res, next, model, entityFile);
 };
 
-// const deleteProduct = (req, res) => {};
+const updateProduct = (req, res, next, model, entityFile, entityName) => {
+  updateOneObj(req, res, next, model, entityFile, entityName);
+};
+
+const deleteProduct = (req, res, next, entityFile) => {
+  deleteObj(req, res, next, entityFile);
+};
 
 module.exports = {
+  getOneProduct,
   listOfProducts,
-  // seeProduct,
   createProduct,
   updateProduct,
-  // deleteProduct
+  deleteProduct,
 };

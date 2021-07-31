@@ -2,7 +2,6 @@ const express = require("express");
 
 const server = express();
 const {
-  //   deleteProduct,
   listOfOrders,
   getOneOrder,
   createOrder,
@@ -11,18 +10,20 @@ const {
 } = require("./handlers/ordersHandlers");
 
 const {
+  getOneProduct,
   listOfProducts,
   createProduct,
   updateProduct,
+  deleteProduct,
 } = require("./handlers/productsHandlers");
 
 const {
-  //   loginUsers,
-  //   registerUsers,
-  //   createUser,
-  //   updateUser,
+  loginUsers,
+  // registerUsers,
+  createUser,
+  updateUser,
   listOfUsers,
-  // deleteUser,
+  deleteUser,
 } = require("./handlers/usersHandlers");
 
 const {
@@ -42,16 +43,17 @@ server.use(express.json());
 // server.post("/api/v1/authorization/register", registerUsers);
 
 // //Users
-// server.post("/api/v1/user/:id", createUser);
-// server.post("/api/v1/user/:id", updateUser);
+server.post("/api/v1/user/:id", createUser);
+server.post("/api/v1/user/:id", updateUser);
 server.get("/api/v1/user", listOfUsers);
-// server.delete("api/v1/user/:id", deleteUser);
+server.delete("api/v1/user/:id", deleteUser);
 
 // //Products
+server.get("/api/v1/products/:id", getOneProduct);
 server.get("/api/v1/products", listOfProducts);
 server.post("/api/v1/products", createProduct);
 server.put("/api/v1/products/:id", updateProduct);
-// server.delete("/api/v1/products/:id", deleteProduct);
+server.delete("/api/v1/products/:id", deleteProduct);
 
 // //Orders
 server.get("/api/v1/order", listOfOrders);
@@ -66,6 +68,6 @@ server.get("/api/v1/paymentMethod", listOfPaymentsMethod);
 // server.put("/api/v1/paymentMethod/:id", updatePaymentMethod);
 // server.delete("/api/v1/paymentMethod/:id", deletePaymentMethod);
 
-server.listen(8080, function () {
-  console.log("Escuchando el puerto 8080!");
+server.listen(9090, function () {
+  console.log("Escuchando el puerto 9090!");
 });
