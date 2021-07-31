@@ -1,8 +1,8 @@
-const { updateOneObj, deleteObj } = require("../functions.js");
+const { updateOneObj } = require("../functions.js");
 const { readFromJson } = require("../functions.js");
 const { getOneObj } = require("../functions.js");
 const { createOneObject } = require("../functions.js");
-
+const { deleteObj } = require("../functions.js");
 const listOfOrders = (req, res) => {
   res.send(readFromJson("./data/orders.json"));
 };
@@ -50,8 +50,7 @@ const updateOrder = (req, res, next) => {
 
 const deleteOrder = (req, res, next) => {
   let entityFile = "./data/orders.json";
-  let entityName = "orders";
-  deleteObj(req, res, next, entityFile, entityName);
+  deleteObj(req, res, next, entityFile);
 };
 
 module.exports = {

@@ -33,7 +33,6 @@ const entityNotFound = (entityFromDB, entityName) => {
 //busco la entity con el id que tengo en params
 const findOneObj = (req, res, entityFile, entityName) => {
   let DBEntities = readFromJson(entityFile);
-
   const entityFromDB = DBEntities.find(
     (entity) => entity.id === Number(req.params.id)
   );
@@ -58,8 +57,26 @@ const updateOneObj = (req, res, next, model, entityFile, entityName) => {
         return entity;
       }
     });
+    writeFileJson(req, res, entityFile, newModelInfo, model);
+  } catch (e) {
+    next(e);
+  }
+};
+
+const deleteObj = (req, res, next, entityFile) => {
+  try {
+    findOneObj(req, res, entityFile);
+    const newModelInfo = readFromJson(entityFile)
+      .map((entity) => {
+        if (entity.id === Number(req.params.id)) {
+          return null;
+        } else {
+          return entity;
+        }
+      })
+      .filter((entity) => entity !== null);
     fs.writeFileSync(entityFile, JSON.stringify(newModelInfo));
-    res.status(200).json(model);
+    res.status(200).end();
   } catch (e) {
     next(e);
   }
@@ -68,6 +85,7 @@ const updateOneObj = (req, res, next, model, entityFile, entityName) => {
 module.exports = {
   readFromJson,
   writeFileJson,
+  deleteObj,
   createOneObject,
   getOneObj,
   updateOneObj,
