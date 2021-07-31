@@ -5,9 +5,9 @@ const {
   //   deleteProduct,
   listOfOrders,
   getOneOrder,
-  //   createOrder,
+  createOrder,
   updateOrder,
-  //   deleteOrder,
+  deleteOrder,
 } = require("./handlers/ordersHandlers");
 
 const {
@@ -56,9 +56,9 @@ server.put("/api/v1/products/:id", updateProduct);
 // //Orders
 server.get("/api/v1/order", listOfOrders);
 server.get("/api/v1/order/:id", getOneOrder);
-// server.post("/api/v1/order/:id", createOrder);
+server.post("/api/v1/order/", createOrder);
 server.put("/api/v1/order/:id", updateOrder);
-// server.delete("/api/v1/order/:id", deleteOrder);
+server.delete("/api/v1/order/:id", deleteOrder);
 
 // //Payments
 server.get("/api/v1/paymentMethod", listOfPaymentsMethod);
@@ -66,6 +66,6 @@ server.get("/api/v1/paymentMethod", listOfPaymentsMethod);
 // server.put("/api/v1/paymentMethod/:id", updatePaymentMethod);
 // server.delete("/api/v1/paymentMethod/:id", deletePaymentMethod);
 
-server.listen(9090, function () {
-  console.log("Escuchando el puerto 9090!");
+server.listen(8080, function () {
+  console.log("Escuchando el puerto 8080!");
 });
