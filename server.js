@@ -44,11 +44,17 @@ server.use(express.json());
 // server.post("/api/v1/authorization/register", registerUsers);
 
 // //Users
-server.post("/api/v1/user", createUser);
-server.put("/api/v1/user/:id", updateUser);
-server.get("/api/v1/user", listOfUsers);
+server.get("/api/v1/user/", listOfUsers);
 server.get("/api/v1/user/:id", getOneUser);
-server.delete("api/v1/user/:id", deleteUser);
+server.post("/api/v1/user/", createUser);
+server.put("/api/v1/user/:id", updateUser);
+server.delete("/api/v1/user/:id", deleteUser);
+
+// server.get("/api/v1/order", listOfOrders);
+// server.get("/api/v1/order/:id", getOneOrder);
+// server.post("/api/v1/order/", createOrder);
+// server.put("/api/v1/order/:id", updateOrder);
+// server.delete("/api/v1/order/:id", deleteOrder);
 
 // //Products
 server.get("/api/v1/products/:id", getOneProduct);

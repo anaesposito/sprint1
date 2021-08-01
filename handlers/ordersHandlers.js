@@ -3,6 +3,7 @@ const { readFromJson } = require("../functions.js");
 const { getOneObj } = require("../functions.js");
 const { createOneObject } = require("../functions.js");
 const { deleteObj } = require("../functions.js");
+
 const listOfOrders = (req, res) => {
   res.send(readFromJson("./data/orders.json"));
 };
@@ -12,6 +13,7 @@ const getOneOrder = (req, res) => {
   let entityName = "order";
   getOneObj(req, res, entityFile, entityName);
 };
+
 const createOrder = (req, res, next) => {
   let entityFile = "./data/orders.json";
   const model = {

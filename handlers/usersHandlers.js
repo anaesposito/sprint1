@@ -7,17 +7,33 @@ const { deleteObj } = require("../functions.js");
 // enconde btoa()
 //decode atob()
 
-const entityFile = "./data/user.json";
+// const entityFile = "./data/user.json";
+// let entityFile = "./data/user.json";
 const entityName = "user";
 
-const loginUsers = (req, res) => {};
-// const registerUsers = (req, res) => {
+// const loginUsers = (req, res) => {};
+// // const registerUsers = (req, res) => {
 
-// };
+// // };
+
+const listOfUsers = (req, res) => {
+  // let entityFile = "./data/user.json";
+  res.send(readFromJson("./data/user.json"));
+};
+
+const getOneUser = (req, res) => {
+  const entityName = "user";
+  let entityFile = "./data/user.json";
+  getOneObj(req, res, entityFile, entityName);
+};
+
 const createUser = (req, res, next) => {
+  const entityName = "user";
+  let entityFile = "./data/user.json";
+
   const model = {
     id: Number(req.body.id),
-    userName: req.body.username,
+    userName: req.body.userName,
     phoneNumber: req.body.phoneNumber,
     email: req.body.email,
     deliveryAdress: req.body.deliveryAdress,
@@ -28,6 +44,8 @@ const createUser = (req, res, next) => {
 };
 
 const updateUser = (req, res, next) => {
+  let entityFile = "./data/user.json";
+  const entityName = "user";
   const model = {
     id: Number(req.body.id),
     userName: req.body.username,
@@ -40,22 +58,17 @@ const updateUser = (req, res, next) => {
   updateOneObj(req, res, next, model, entityFile, entityName);
 };
 
-const listOfUsers = (req, res) => {
-  res.send(readFromJson("./data/user.json"));
-};
-const getOneUser = (req, res) => {
-  getOneObj(req, res, entityFile, entityName);
-};
 const deleteUser = (req, res, next) => {
+  let entityFile = "./data/user.json";
   deleteObj(req, res, next, entityFile);
 };
 
 module.exports = {
-  loginUsers,
+  // loginUsers,
   // registerUsers,
-  createUser,
-  updateUser,
   listOfUsers,
   getOneUser,
+  createUser,
+  updateUser,
   deleteUser,
 };

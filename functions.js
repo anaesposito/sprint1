@@ -67,6 +67,7 @@ const updateOneObj = (req, res, next, model, entityFile, entityName) => {
 const deleteObj = (req, res, next, entityFile) => {
   try {
     findOneObj(req, res, entityFile);
+
     const newModelInfo = readFromJson(entityFile)
       .map((entity) => {
         if (entity.id === Number(req.params.id)) {
