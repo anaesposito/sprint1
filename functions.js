@@ -13,7 +13,8 @@ const writeFileJson = (req, res, entityFile, newModelInfo, model) => {
 
 const createOneObject = (req, res, next, model, entityFile) => {
   try {
-    let data = readFromJson("./data/orders.json");
+    let data = readFromJson(entityFile);
+
     data.push(model);
     writeFileJson(req, res, entityFile, data, model);
   } catch (e) {

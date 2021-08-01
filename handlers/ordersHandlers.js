@@ -15,7 +15,7 @@ const getOneOrder = (req, res) => {
 const createOrder = (req, res, next) => {
   let entityFile = "./data/orders.json";
   const model = {
-    id: Number(req.body.id)
+    id: Number(req.body.id),
     time: req.body.time,
     user: req.body.user,
     items: req.body.items,

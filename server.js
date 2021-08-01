@@ -24,6 +24,7 @@ const {
   updateUser,
   listOfUsers,
   deleteUser,
+  getOneUser,
 } = require("./handlers/usersHandlers");
 
 const {
@@ -43,9 +44,10 @@ server.use(express.json());
 // server.post("/api/v1/authorization/register", registerUsers);
 
 // //Users
-server.post("/api/v1/user/:id", createUser);
-server.post("/api/v1/user/:id", updateUser);
+server.post("/api/v1/user", createUser);
+server.put("/api/v1/user/:id", updateUser);
 server.get("/api/v1/user", listOfUsers);
+server.get("/api/v1/user/:id", getOneUser);
 server.delete("api/v1/user/:id", deleteUser);
 
 // //Products
