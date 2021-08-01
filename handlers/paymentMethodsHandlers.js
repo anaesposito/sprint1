@@ -4,46 +4,44 @@ const { getOneObj } = require("../functions.js");
 const { createOneObject } = require("../functions.js");
 const { deleteObj } = require("../functions.js");
 
-let entityFile = "./data/products.json";
-let entityName = "product";
+// paymentMethod
 
-const listOfProducts = (req, res) => {
+const entityFile = "./data/paymentMethods.json";
+const entityName = "paymentMethods";
+
+const listOfPaymentsMethod = (req, res) => {
   res.send(readFromJson(entityFile));
 };
 
-const getOneProduct = (req, res) => {
+const getOnePaymentMethod = (req, res) => {
   getOneObj(req, res, entityFile, entityName);
 };
 
-const createProduct = (req, res, next) => {
+const createPaymentMethod = (req, res, next) => {
   const model = {
     id: Number(req.body.id),
     name: req.body.name,
-    price: Number(req.body.price),
-    quantity: Number(req.body.quantity),
+    installments: Number(req.body.installments),
   };
   createOneObject(req, res, next, model, entityFile);
 };
 
-const updateProduct = (req, res, next) => {
+const updatePaymentMethod = (req, res, next) => {
   const model = {
     id: Number(req.body.id),
     name: req.body.name,
-    price: Number(req.body.price),
-    quantity: Number(req.body.quantity),
+    installments: Number(req.body.installments),
   };
-
   updateOneObj(req, res, next, model, entityFile, entityName);
 };
-
-const deleteProduct = (req, res, next) => {
+const deletePaymentMethod = (req, res, next) => {
   deleteObj(req, res, next, entityFile);
 };
 
 module.exports = {
-  getOneProduct,
-  listOfProducts,
-  createProduct,
-  updateProduct,
-  deleteProduct,
+  listOfPaymentsMethod,
+  getOnePaymentMethod,
+  createPaymentMethod,
+  updatePaymentMethod,
+  deletePaymentMethod,
 };

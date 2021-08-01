@@ -20,7 +20,7 @@ const {
 const {
   loginUsers,
   // registerUsers,
-  createUser,
+  registerUser,
   updateUser,
   listOfUsers,
   deleteUser,
@@ -29,11 +29,11 @@ const {
 
 const {
   listOfPaymentsMethod,
-
-  //   createPaymentMethod,
-  //   updatePaymentMethod,
-  //   deletePaymentMethod,
-} = require("./handlers/typeOfPaymentsHandlers");
+  getOnePaymentMethod,
+  createPaymentMethod,
+  updatePaymentMethod,
+  deletePaymentMethod,
+} = require("./handlers/paymentMethodsHandlers");
 
 server.use(express.json());
 
@@ -46,15 +46,9 @@ server.use(express.json());
 // //Users
 server.get("/api/v1/user/", listOfUsers);
 server.get("/api/v1/user/:id", getOneUser);
-server.post("/api/v1/user/", createUser);
+server.post("/api/v1/user/", registerUser);
 server.put("/api/v1/user/:id", updateUser);
 server.delete("/api/v1/user/:id", deleteUser);
-
-// server.get("/api/v1/order", listOfOrders);
-// server.get("/api/v1/order/:id", getOneOrder);
-// server.post("/api/v1/order/", createOrder);
-// server.put("/api/v1/order/:id", updateOrder);
-// server.delete("/api/v1/order/:id", deleteOrder);
 
 // //Products
 server.get("/api/v1/products/:id", getOneProduct);
@@ -72,9 +66,10 @@ server.delete("/api/v1/order/:id", deleteOrder);
 
 // //Payments
 server.get("/api/v1/paymentMethod", listOfPaymentsMethod);
-// server.post("/api/v1/paymentMethod/:id", createPaymentMethod);
-// server.put("/api/v1/paymentMethod/:id", updatePaymentMethod);
-// server.delete("/api/v1/paymentMethod/:id", deletePaymentMethod);
+server.get("/api/v1/paymentMethod/:id", getOnePaymentMethod);
+server.post("/api/v1/paymentMethod/", createPaymentMethod);
+server.put("/api/v1/paymentMethod/:id", updatePaymentMethod);
+server.delete("/api/v1/paymentMethod/:id", deletePaymentMethod);
 
 server.listen(9090, function () {
   console.log("Escuchando el puerto 9090!");

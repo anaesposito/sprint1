@@ -4,18 +4,18 @@ const { getOneObj } = require("../functions.js");
 const { createOneObject } = require("../functions.js");
 const { deleteObj } = require("../functions.js");
 
+const entityFile = "./data/orders.json";
+const entityName = "order";
+
 const listOfOrders = (req, res) => {
-  res.send(readFromJson("./data/orders.json"));
+  res.send(readFromJson(entityFile));
 };
 
 const getOneOrder = (req, res) => {
-  let entityFile = "./data/orders.json";
-  let entityName = "order";
   getOneObj(req, res, entityFile, entityName);
 };
 
 const createOrder = (req, res, next) => {
-  let entityFile = "./data/orders.json";
   const model = {
     id: Number(req.body.id),
     time: req.body.time,
@@ -32,9 +32,7 @@ const createOrder = (req, res, next) => {
 };
 
 const updateOrder = (req, res, next) => {
-  let entityFile = "./data/orders.json";
-  let entityName = "orders";
-  let order = {
+  let model = {
     id: Number(req.params.id),
     time: req.body.time,
     user: req.body.user,
@@ -47,11 +45,10 @@ const updateOrder = (req, res, next) => {
     typeOfPayment: req.body.typeOfPayment,
   };
 
-  updateOneObj(req, res, next, order, entityFile, entityName);
+  updateOneObj(req, res, next, model, entityFile, entityName);
 };
 
 const deleteOrder = (req, res, next) => {
-  let entityFile = "./data/orders.json";
   deleteObj(req, res, next, entityFile);
 };
 

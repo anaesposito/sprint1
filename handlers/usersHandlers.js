@@ -7,17 +7,7 @@ const { deleteObj } = require("../functions.js");
 // enconde btoa()
 //decode atob()
 
-// const entityFile = "./data/user.json";
-// let entityFile = "./data/user.json";
-const entityName = "user";
-
-// const loginUsers = (req, res) => {};
-// // const registerUsers = (req, res) => {
-
-// // };
-
 const listOfUsers = (req, res) => {
-  // let entityFile = "./data/user.json";
   res.send(readFromJson("./data/user.json"));
 };
 
@@ -27,8 +17,7 @@ const getOneUser = (req, res) => {
   getOneObj(req, res, entityFile, entityName);
 };
 
-const createUser = (req, res, next) => {
-  const entityName = "user";
+const registerUser = (req, res, next) => {
   let entityFile = "./data/user.json";
 
   const model = {
@@ -65,10 +54,10 @@ const deleteUser = (req, res, next) => {
 
 module.exports = {
   // loginUsers,
-  // registerUsers,
+
   listOfUsers,
   getOneUser,
-  createUser,
+  registerUser,
   updateUser,
   deleteUser,
 };
