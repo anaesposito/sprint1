@@ -3,23 +3,22 @@ const { readFromJson } = require("../functions.js");
 const { getOneObj } = require("../functions.js");
 const { createOneObject } = require("../functions.js");
 const { deleteObj } = require("../functions.js");
+const { entityNotFound } = require("../functions.js");
 
 // enconde btoa()
 //decode atob()
 
+const entityName = "user";
+const entityFile = "./data/user.json";
 const listOfUsers = (req, res) => {
   res.send(readFromJson("./data/user.json"));
 };
 
 const getOneUser = (req, res) => {
-  const entityName = "user";
-  let entityFile = "./data/user.json";
   getOneObj(req, res, entityFile, entityName);
 };
 
 const registerUser = (req, res, next) => {
-  let entityFile = "./data/user.json";
-
   const model = {
     id: Number(req.body.id),
     userName: req.body.userName,
@@ -33,8 +32,6 @@ const registerUser = (req, res, next) => {
 };
 
 const updateUser = (req, res, next) => {
-  let entityFile = "./data/user.json";
-  const entityName = "user";
   const model = {
     id: Number(req.body.id),
     userName: req.body.username,
@@ -48,16 +45,32 @@ const updateUser = (req, res, next) => {
 };
 
 const deleteUser = (req, res, next) => {
-  let entityFile = "./data/user.json";
   deleteObj(req, res, next, entityFile);
 };
 
-module.exports = {
-  // loginUsers,
+const loginUser = (req, res, next) => {
+  let DBEntities = readFromJson(entityFile);
+  const entityFromDB = DBEntities.find(
+    (entity) =>
+      entity.userName === req.body.userName &&
+      entity.password === req.body.password
+  );
+  if (!entityFromDB) {
+    const err = new Error(`${entityName} info not found`);
+    err.status = 404;
+    throw new Error("User is not registered");
+  } else {
+    res.send("You are logged in");
 
+    next();
+  }
+};
+
+module.exports = {
   listOfUsers,
   getOneUser,
   registerUser,
   updateUser,
   deleteUser,
+  loginUser,
 };

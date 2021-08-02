@@ -25,6 +25,7 @@ const {
   listOfUsers,
   deleteUser,
   getOneUser,
+  loginUser,
 } = require("./handlers/usersHandlers");
 
 const {
@@ -35,18 +36,21 @@ const {
   deletePaymentMethod,
 } = require("./handlers/paymentMethodsHandlers");
 
+// const { validUser } = require("./middlewares");
 server.use(express.json());
 
 // // CRUD (Create, Read, Update, Delete)
 // // Login
 
-// server.post("/api/v1/authorization/login", loginUsers);
 // server.post("/api/v1/authorization/register", registerUsers);
 
 // //Users
-server.get("/api/v1/user/", listOfUsers);
+// server.get("/api/v1/user/:id", loginUser);
+server.get("/api/v1/user/", loginUser, listOfUsers);
 server.get("/api/v1/user/:id", getOneUser);
+server.post("/api/v1/user/userName", loginUser, getOneUser);
 server.post("/api/v1/user/", registerUser);
+
 server.put("/api/v1/user/:id", updateUser);
 server.delete("/api/v1/user/:id", deleteUser);
 
